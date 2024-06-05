@@ -1,5 +1,7 @@
-﻿using Api.Models;
+﻿using Api;
+using Api.Models;
 using Microsoft.EntityFrameworkCore;
+using ProjetoFindPet.Models;
 
 namespace Api.Data
 {
@@ -10,11 +12,15 @@ namespace Api.Data
 
         }
 
-        public DbSet<UsersModel> User { get; set; }
+        public DbSet<UsuarioModel> Usuarios { get; set; }
+        public DbSet<AnimaisModel> Animal { get; set; }
+        public DbSet<ObservacoesModel> Observacao { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new UsersMap());
+            modelBuilder.ApplyConfiguration(new UsuarioMap());
+            modelBuilder.ApplyConfiguration(new AnimaisMap());
+            modelBuilder.ApplyConfiguration(new ObservacoesMap());
             base.OnModelCreating(modelBuilder);
         }
 

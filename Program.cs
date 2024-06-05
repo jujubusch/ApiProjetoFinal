@@ -2,6 +2,7 @@ using Api.Data;
 using Api.Repositorios;
 using Api.Repositorios.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using ProjetoFindPet.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,9 @@ builder.Services.AddEntityFrameworkSqlServer()
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
     );
 
-builder.Services.AddScoped <IUsersRepositorio, UsersRepositorio>();
+builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+builder.Services.AddScoped<IAnimaisRepositorio, AnimaisRepositorio>();
+builder.Services.AddScoped<IObservacoesRepositorio, ObservacoesRepositorio>();
 
 builder.Services.AddCors(options =>
 {
